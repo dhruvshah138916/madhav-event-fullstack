@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useEvents } from '../context/EventContext.jsx'
 import GlassCard from '../components/GlassCard.jsx'
+import { getImageUrl } from '../api'
 
 const emptyForm = {
   title: '', category: 'Concert', date: '', time: '', venue: '',
@@ -68,7 +69,7 @@ export default function AdminEvents() {
       organizer: event.organizer, description: event.description,
     })
     setImageFile(null)
-    setImagePreview(event.image || '')
+    setImagePreview(getImageUrl(event.image) || '')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
