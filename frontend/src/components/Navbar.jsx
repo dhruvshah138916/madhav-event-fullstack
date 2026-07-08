@@ -30,11 +30,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="mainNav">
           <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-2">
             
-            /* {user?.role != 'organizer' && (
-              <li className="nav-item">
-                <NavLink to="/" end className="nav-link">Events</NavLink>
-              </li>
-            )} */
+            
 
             {/* User panel link - attendees only */}
             {user?.role === 'attendee' && (
