@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useEvents } from '../context/EventContext.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
 import GlassCard from '../components/GlassCard.jsx'
+import { getImageUrl } from '../api'
 
 export default function EventDetails() {
   const { id } = useParams()
@@ -36,7 +37,7 @@ export default function EventDetails() {
 
   return (
     <div className="detail-page">
-      <div className="detail-banner" style={{ backgroundImage: `url(${event.image})` }}>
+      <div className="detail-banner" style={{ backgroundImage: `url(${getImageUrl(event.image)})` }}>
         <div className="detail-banner-overlay"></div>
       </div>
 
