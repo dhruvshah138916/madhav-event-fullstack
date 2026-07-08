@@ -1,7 +1,13 @@
-// Small helper around fetch() so every context doesn't repeat the same code.
-// In dev, Vite proxies "/api" to the Express server (see vite.config.js).
-const BASE_URL = 'https://madhav-event-fullstack.onrender.com/api'
+export const API_ORIGIN = import.meta.env.VITE_API_URL || ''
+
+const BASE_URL = `${API_ORIGIN}/api`
 const TOKEN_KEY = 'mwe_token'
+
+export function getImageUrl(imagePath) {
+  if (!imagePath) return ''
+  if (/^(https?:|blob:|data:)/.test(imagePath)) return imagePath
+  return `${API_ORIGIN}${imagePath}`
+}
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY)
@@ -16,8 +22,7 @@ export function clearToken() {
 }
 
 export async function apiRequest(path, { method = 'GET', body, auth = false } = {}) {
-  // When body is a FormData (e.g. a form with a file upload), let the browser
-  // set its own multipart/form-data Content-Type (with boundary) instead of JSON.
+
   const isFormData = typeof FormData !== 'undefined' && body instanceof FormData
   const headers = isFormData ? {} : { 'Content-Type': 'application/json' }
 
