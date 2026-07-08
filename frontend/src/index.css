@@ -1,0 +1,480 @@
+/* ==========================================================================
+   Madhav Event — design tokens
+   Liquid-glass aesthetic: dark gradient canvas, floating blurred color
+   blobs, and frosted translucent panels with soft borders.
+   ========================================================================== */
+
+:root {
+  --primary: #00ADB5;
+  --primary-dark: #00858c;
+  --primary-light: #5fd6db;
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --dark: #222831;
+  --dark-2: #393E46;
+  --light: #EEEEEE;
+  --muted: #606D6D;
+
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--light);
+  background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 55%, #1b2027 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--light);
+}
+
+a { color: var(--primary-light); text-decoration: none; }
+a:hover { color: var(--primary); }
+
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.app-shell main { flex: 1; }
+
+.text-muted-light { color: rgba(238, 238, 238, 0.62); }
+.text-warning-strong { color: #ffb454; font-weight: 600; }
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--primary-light);
+  font-weight: 600;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Frosted glass primitives
+   ========================================================================== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin: 1.25rem 0;
+}
+
+/* Buttons */
+.btn-primary-glass {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  box-shadow: 0 6px 20px rgba(0, 173, 181, 0.35);
+}
+.btn-primary-glass:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  color: #fff;
+}
+.btn-primary-glass:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-outline-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  color: var(--light);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: background 0.15s ease;
+}
+.btn-outline-glass:hover { background: rgba(255, 255, 255, 0.14); color: var(--light); }
+
+.btn-icon-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--light);
+  border-radius: 10px;
+  width: 34px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.btn-icon-glass:hover { background: rgba(255, 255, 255, 0.18); color: var(--light); }
+.btn-danger-icon:hover { background: rgba(255, 90, 90, 0.25); }
+
+/* Inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--light) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.6rem 0.9rem;
+}
+.glass-input::placeholder { color: rgba(238, 238, 238, 0.45); }
+.glass-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 173, 181, 0.28) !important;
+  border-color: var(--primary) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+select.glass-input option { color: #222831; }
+.glass-input-icon {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--glass-border);
+  border-right: none;
+  color: var(--primary-light);
+}
+.form-label.small { color: rgba(238, 238, 238, 0.75); }
+
+.image-preview-wrap {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 140px;
+}
+.image-preview { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.alert-glass-danger {
+  background: rgba(255, 90, 90, 0.14);
+  border: 1px solid rgba(255, 90, 90, 0.35);
+  color: #ffcccc;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+.glass-navbar {
+  background: rgba(34, 40, 49, 0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--light) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.brand-accent { color: var(--primary); }
+
+.brand-mark {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 173, 181, 0.45);
+}
+.brand-mark-lg { width: 56px; height: 56px; font-size: 1.4rem; border-radius: 16px; }
+
+.nav-link { color: rgba(238, 238, 238, 0.78) !important; font-weight: 500; }
+.nav-link.active, .nav-link:hover { color: var(--primary-light) !important; }
+
+.avatar-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.72rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 700;
+}
+
+.glass-dropdown {
+  background: rgba(34, 40, 49, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+}
+.glass-dropdown .dropdown-item { color: var(--light); }
+.glass-dropdown .dropdown-item:hover { background: rgba(255, 255, 255, 0.08); color: var(--primary-light); }
+.glass-dropdown .dropdown-item-text { color: rgba(238,238,238,0.6); }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 9rem 0 6rem;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 760px; }
+
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub { color: rgba(238, 238, 238, 0.7); font-size: 1.05rem; max-width: 560px; }
+
+.search-bar { max-width: 720px; }
+.search-input-group .form-control { border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important; }
+.search-input-group .input-group-text { border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important; }
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  z-index: 1;
+  animation: float 12s ease-in-out infinite;
+}
+.hero-blob-1 { width: 420px; height: 420px; background: var(--primary); top: -140px; right: -100px; }
+.hero-blob-2 { width: 320px; height: 320px; background: #5f6cff; opacity: 0.28; bottom: -120px; left: -80px; animation-delay: -4s; }
+.hero-blob-3 { width: 220px; height: 220px; background: var(--primary-light); opacity: 0.3; top: 40%; left: 55%; animation-delay: -8s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 30px) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob, .auth-blob { animation: none; }
+}
+
+/* ==========================================================================
+   Event cards
+   ========================================================================== */
+
+.event-card { overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.event-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+
+.event-card-media { position: relative; height: 170px; overflow: hidden; }
+.event-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.event-date-chip {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(255,255,255,0.9);
+  color: var(--dark);
+  border-radius: 10px;
+  padding: 0.3rem 0.55rem;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 1.1;
+  backdrop-filter: blur(6px);
+}
+
+.event-category-badge {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(0, 173, 181, 0.85);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.68rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+}
+.event-category-badge.static { position: static; display: inline-block; }
+
+.price-text { color: var(--primary-light); font-size: 1.15rem; }
+
+/* ==========================================================================
+   Auth pages
+   ========================================================================== */
+
+.auth-page {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding: 7rem 0 3rem;
+  overflow: hidden;
+}
+.auth-card { position: relative; z-index: 2; }
+
+.auth-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; animation: float 14s ease-in-out infinite; }
+.auth-blob-1 { width: 380px; height: 380px; background: var(--primary); top: -100px; left: -80px; }
+.auth-blob-2 { width: 300px; height: 300px; background: #5f6cff; opacity: 0.3; bottom: -100px; right: -60px; animation-delay: -6s; }
+
+.role-toggle { display: flex; gap: 0.6rem; }
+.role-btn {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--glass-border);
+  color: rgba(238,238,238,0.75);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.role-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Event details
+   ========================================================================== */
+
+.detail-banner {
+  height: 320px;
+  margin-top: 72px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.detail-banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(34,40,49,0.15) 0%, rgba(34,40,49,0.95) 100%);
+}
+.detail-body { margin-top: -80px; position: relative; z-index: 2; padding-bottom: 4rem; }
+.detail-meta { color: rgba(238,238,238,0.75); font-size: 0.92rem; }
+.booking-sidebar { position: sticky; top: 96px; }
+
+.seat-progress { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.12); overflow: hidden; }
+.seat-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); }
+
+/* ==========================================================================
+   Booking / stepper / summary
+   ========================================================================== */
+
+.seat-stepper { display: flex; align-items: center; gap: 0.75rem; }
+.stepper-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--light);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.stepper-btn:hover { background: rgba(255,255,255,0.18); }
+.stepper-value { font-weight: 700; font-size: 1.1rem; min-width: 24px; text-align: center; }
+
+.summary-box { background: rgba(255,255,255,0.04); }
+
+/* ==========================================================================
+   Confirmation / ticket
+   ========================================================================== */
+
+.success-check {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff; font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,173,181,0.4);
+}
+
+.ticket-card { overflow: hidden; }
+.ticket-top { background: rgba(255,255,255,0.04); }
+.ticket-bottom { background: rgba(255,255,255,0.02); }
+.status-badge {
+  background: rgba(0,173,181,0.2);
+  color: var(--primary-light);
+  border: 1px solid rgba(0,173,181,0.4);
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+}
+
+.ticket-divider {
+  position: relative;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255,255,255,0.25) 50%, transparent 50%);
+  background-size: 14px 1px;
+  margin: 0 1.5rem;
+}
+.ticket-notch {
+  position: absolute; top: -10px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--dark-2);
+}
+.ticket-notch-left { left: -30px; }
+.ticket-notch-right { right: -30px; }
+
+/* ==========================================================================
+   Dashboard
+   ========================================================================== */
+
+.stat-card { display: flex; align-items: center; gap: 0.9rem; padding: 1.1rem 1.2rem; }
+.stat-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--light);
+}
+.stat-icon-accent { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; }
+.stat-value { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; }
+.stat-label { font-size: 0.8rem; color: rgba(238,238,238,0.6); }
+
+/* Bootstrap's .table defaults its cell background to --bs-body-bg (white),
+   which was painting an opaque white box over these dark glass cards and
+   making the light-colored text on top of it unreadable. Force it transparent
+   and set readable colors explicitly instead. */
+.table-glass {
+  --bs-table-bg: transparent;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.06);
+  --bs-table-hover-color: var(--light);
+  background-color: transparent;
+  color: var(--light);
+}
+.table-glass thead { color: rgba(238,238,238,0.55); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.table-glass td, .table-glass th { border-color: rgba(255,255,255,0.08); vertical-align: middle; background-color: transparent; }
+
+.bar-chart { display: flex; flex-direction: column; gap: 0.85rem; }
+.bar-row { display: flex; align-items: center; gap: 0.75rem; }
+.bar-label { width: 40px; font-size: 0.8rem; color: rgba(238,238,238,0.65); }
+.bar-track { flex: 1; height: 10px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--primary-light)); border-radius: 999px; }
+.bar-count { width: 20px; text-align: right; font-size: 0.82rem; font-weight: 600; }
+
+/* ==========================================================================
+   Notifications
+   ========================================================================== */
+
+.notification-icon { color: var(--primary-light); font-size: 1.1rem; margin-top: 2px; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.15);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+  .booking-sidebar { position: static; }
+  .hero-section { padding: 7.5rem 0 4rem; }
+  .detail-banner { margin-top: 0; }
+}

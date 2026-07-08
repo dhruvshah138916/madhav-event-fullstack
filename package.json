@@ -1,0 +1,17 @@
+{
+  "name": "madhav-event-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Madhav Event - full stack (React + Vite frontend, Node/Express + JSON-file backend)",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently -n BACKEND,FRONTEND -c blue,green \"npm:dev:backend\" \"npm:dev:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
