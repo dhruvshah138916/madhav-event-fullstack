@@ -1,6 +1,6 @@
 // Small helper around fetch() so every context doesn't repeat the same code.
 // In dev, Vite proxies "/api" to the Express server (see vite.config.js).
-const BASE_URL = '/api'
+const BASE_URL = 'https://madhav-event-fullstack.onrender.com/api'
 const TOKEN_KEY = 'mwe_token'
 
 export function getToken() {
