@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { getImageUrl } from '../api'
 
 export default function EventCard({ event }) {
   const dateObj = new Date(event.date)
@@ -9,7 +10,7 @@ export default function EventCard({ event }) {
   return (
     <div className="event-card glass-card h-100">
       <div className="event-card-media">
-        <img src={`https://madhav-event-fullstack.onrender.com${event.image}`} alt={event.title} loading="lazy" />
+        <img src={getImageUrl(event.image)} alt={event.title} loading="lazy" />
         <div className="event-date-chip">
           <span className="d-block fw-bold">{day}</span>
           <span className="d-block text-uppercase">{month}</span>
